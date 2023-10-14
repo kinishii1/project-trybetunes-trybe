@@ -1,10 +1,16 @@
 import { useState } from 'react';
+import { addSong, removeSong } from '../services/favoriteSongsAPI';
 
 function MusicCard({ trackName, previewUrl, trackId }: any) {
   const [favorite, setFavorite] = useState(false);
 
   const changeHandler = () => {
     setFavorite(!favorite);
+    if (!favorite) {
+      addSong({ trackName, previewUrl, trackId });
+    } else {
+      removeSong(trackId);
+    }
   };
 
   return (
