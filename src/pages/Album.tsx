@@ -15,7 +15,7 @@ function Album() {
       if (!id) {
         return;
       }
-      const musicsReturned = await getMusics(id) as AlbumType[];
+      const musicsReturned = (await getMusics(id)) as AlbumType[];
       setIsLoading(false);
       setMusics(musicsReturned);
     };
@@ -32,7 +32,10 @@ function Album() {
         <h1 data-testid="artist-name">{musics[0].artistName}</h1>
         <h2 data-testid="album-name">{musics[0].collectionName}</h2>
         {musics.slice(1).map((music: any) => (
-          <MusicCard key={ music.trackId } { ...music } />
+          <MusicCard
+            key={ music.trackId }
+            { ...music }
+          />
         ))}
       </div>
     );
