@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 
 function Login() {
   const [isDisabled, setIsDisabled] = useState(true);
   const [name, setName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -18,6 +20,7 @@ function Login() {
 
     if (creatingUser) {
       setIsLoading(false);
+      navigate('/search');
     }
   };
 
