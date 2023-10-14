@@ -18,6 +18,7 @@ function Search() {
   const clickHandler = async () => {
     setIsLoading(true);
     const albumsReturn = await searchAlbumsAPI(search);
+    console.log(albumsReturn);
     setAlbums(albumsReturn);
     setSearchInput(search);
     setSearch('');
@@ -51,12 +52,16 @@ function Search() {
           <div>
             {albums.map((album: any) => (
               <div key={ album.collectionId }>
-                <img src={ album.collectionViewUrl } alt={ album.collectionName } />
+                <img src={ album.artworkUrl100 } alt={ album.collectionName } />
                 <p>{album.collectionName}</p>
                 <Link
                   data-testid={ `link-to-album-${album.collectionId}` }
                   to={ `/album/${album.collectionId}` }
-                />
+                >
+                  {' '}
+                  Ir para album
+                  {' '}
+                </Link>
               </div>
             ))}
           </div>
