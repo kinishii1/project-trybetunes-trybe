@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import {
   addSong,
-  removeSong,
   getFavoriteSongs,
+  removeSong,
 } from '../services/favoriteSongsAPI';
 
 function MusicCard({ trackName, previewUrl, trackId }: any) {
@@ -17,7 +17,9 @@ function MusicCard({ trackName, previewUrl, trackId }: any) {
     };
     getFavorite();
   }, [trackId]);
+
   console.log(favorite);
+
   const changeHandler = () => {
     setFavorite(!favorite);
     if (!favorite) {
