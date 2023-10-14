@@ -20,7 +20,7 @@ function Album() {
       setMusics(musicsReturned);
     };
     fechtMusics();
-  }, []);
+  }, [id]);
 
   if (isLoading) {
     return <p>Carregando...</p>;

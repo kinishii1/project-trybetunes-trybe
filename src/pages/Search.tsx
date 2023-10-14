@@ -47,6 +47,7 @@ function Search() {
         <div>
           <h1>
             Resultado de álbuns de:
+            {' '}
             {searchInput}
           </h1>
           <div>
