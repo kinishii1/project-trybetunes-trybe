@@ -1,4 +1,12 @@
-function MusicCard({ trackName, previewUrl } : any) {
+import { useState } from 'react';
+
+function MusicCard({ trackName, previewUrl, trackId }: any) {
+  const [favorite, setFavorite] = useState(false);
+
+  const changeHandler = () => {
+    setFavorite(!favorite);
+  };
+
   return (
     <div>
       <p>{trackName}</p>
@@ -8,6 +16,23 @@ function MusicCard({ trackName, previewUrl } : any) {
         {' '}
         <code>audio</code>
       </audio>
+      <label
+        data-testid={ `checkbox-music-${trackId}` }
+        htmlFor={ `favorite-${trackId}` }
+      >
+        {favorite ? (
+          <img src="/src/images/checked_heart.png" alt="favorite" />
+        ) : (
+          <img src="/src/images/empty_heart.png" alt="favorite" />
+        )}
+      </label>
+      <input
+        checked={ favorite }
+        type="checkbox"
+        name="favorite"
+        id={ `favorite-${trackId}` }
+        onChange={ changeHandler }
+      />
     </div>
   );
 }

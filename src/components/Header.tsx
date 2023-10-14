@@ -25,13 +25,13 @@ function Header() {
       {user && <h1 data-testid="header-user-name">{user.name}</h1> }
       <nav>
         <NavLink data-testid="link-to-search" to="/search">
-          Home
+          Search
         </NavLink>
         <NavLink data-testid="link-to-favorites" to="/favorites">
-          Home
+          Favorites
         </NavLink>
         <NavLink data-testid="link-to-profile" to="/profile">
-          Home
+          Profile
         </NavLink>
       </nav>
     </header>
