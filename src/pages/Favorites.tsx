@@ -7,14 +7,21 @@ function Favorites() {
   const [loading, setLoading] = useState(false);
   const [favoriteSongs, setFavoriteSongs] = useState<SongType[]>([]);
 
+  const updateFavoriteSongs = (songId: string) => {
+    const newFavoriteSongs = favoriteSongs.filter(
+      (song: any) => song.trackId !== songId,
+    );
+    setFavoriteSongs(newFavoriteSongs);
+  };
+
   useEffect(() => {
-    setLoading(true);
-    const getFavorite = async () => {
+    const getFavoriteSongsFromAPI = async () => {
+      setLoading(true);
       const returnedFavoriteSongs = await getFavoriteSongs();
       setFavoriteSongs(returnedFavoriteSongs);
       setLoading(false);
     };
-    getFavorite();
+    getFavoriteSongsFromAPI();
   }, []);
 
   if (loading) {
@@ -29,6 +36,7 @@ function Favorites() {
           <MusicCard
             key={ song.trackId }
             { ...song }
+            updateFavoriteSongs={ updateFavoriteSongs }
           />
         ))}
       </div>

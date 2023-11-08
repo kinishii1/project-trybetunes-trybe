@@ -5,8 +5,9 @@ import {
   removeSong,
 } from '../services/favoriteSongsAPI';
 
-function MusicCard({ trackName, previewUrl, trackId }: any) {
+function MusicCard({ trackName, previewUrl, trackId, updateFavoriteSongs } : any) {
   const [favorite, setFavorite] = useState(false);
+
   useEffect(() => {
     const getFavorite = async () => {
       const favoriteSongs = await getFavoriteSongs();
@@ -26,6 +27,7 @@ function MusicCard({ trackName, previewUrl, trackId }: any) {
       addSong({ trackName, previewUrl, trackId });
     } else {
       removeSong(trackId);
+      updateFavoriteSongs(trackId);
     }
   };
 
